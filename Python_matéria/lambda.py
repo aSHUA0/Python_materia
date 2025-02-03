@@ -41,3 +41,42 @@ for item in l1:
 print()
 for item in l2:
     print(item)
+
+#EXECUTANDO FUNÇÕES
+
+def executa(funcao, *args):
+    return funcao(*args)
+
+
+def soma(x, y):
+    return x + y
+
+
+def cria_multiplicador(multiplicador):
+    def multiplica(numero):
+       return numero * multiplicador
+    return multiplica
+
+duplica = cria_multiplicador(2)            ///a mesma coisa///
+duplica = executa(
+    lambda m: lambda n: n * m,            ///a mesma coisa///
+    2
+)
+
+print(
+    executa(
+        lambda x, y: x + y,
+        2, 3
+    ),
+    executa(soma(2,3)),
+    soma(2,3)
+)                                ///TODOS FAZEM A MESMA COISA///
+
+#LAMBDA PODE RECEBER VÁRIOS ARGS
+
+print(
+    executa(
+        lambda *args: sum(args),
+        1, 2, 3, 4, 5, 6, 7
+    )
+)
